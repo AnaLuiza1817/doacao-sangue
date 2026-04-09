@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Lista de Doadores</title>
+</head>
+<body>
+    <div class="main-container">
+        <h1>Doadores Cadastrados</h1>
+        <table id="tabelaDoadores" border="1" style="width:100%; border-collapse: collapse;">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Tipo Sanguíneo</th>
+                    <th>Cidade</th>
+                </tr>
+            </thead>
+            <tbody id="corpoTabela">
+                </tbody>
+        </table>
+        <br>
+        <a href="index.html">Voltar para Cadastro</a>
+    </div>
+
+   <script>
+    const corpoTabela = document.getElementById('corpoTabela');
+   
+    const listaDoadores = JSON.parse(localStorage.getItem('doadores')) || [];
+
+    listaDoadores.forEach(doador => {
+        const linha = `
+            <tr>
+                <td>${doador.nome}</td>
+                <td>${doador.tipoSanguineo}</td> <td>${doador.cidade}</td>
+            </tr>
+        `;
+        corpoTabela.innerHTML += linha;
+    });
+</script>
+</body>
+</html>
